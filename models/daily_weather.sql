@@ -1,3 +1,5 @@
+{{config(materialized = 'table')}}
+
 with daily_weather as (
     select
         date(time) as daily_weather,
@@ -7,8 +9,6 @@ with daily_weather as (
         humidity,
         clouds
     from {{ source('demo', 'weather') }}
-
-    limit 100
 
 ),
 
